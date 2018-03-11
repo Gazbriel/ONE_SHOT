@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour {
 
     public float speed;
     private float speedCounter;
+    public bool canShoot;//this is only for the end game.
     public bool canMove;
     public void SetCanMove(bool a)
     {
@@ -30,7 +32,11 @@ public class CharacterController : MonoBehaviour {
 
     private void Update()
     {
-        Shoot();
+        if (canShoot)
+        {
+            Shoot();
+        }
+        
         Interact();
     }
 
@@ -85,20 +91,28 @@ public class CharacterController : MonoBehaviour {
 
         if (!almostShoot && Input.GetButtonDown("Interact") && GetComponent<Animator>().GetBool("aim"))
         {
-            //the true shoot
-            Debug.Log("Shoot, end game");
+            if (GetComponentInChildren<AimCollider>().GetAimingPerson() != null)
+            {
+                Debug.Log("Shoot to " + GetComponentInChildren<AimCollider>().GetAimingPerson().name + ", end game");
+            }
+            else
+            {
+                Debug.Log("Shoot, end game");
+            }
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Shoot");
+            EndGame();
         }
         
     }
     #endregion
-
+    #region Interact Collider
     public float timeToDisableCollider;
     private void Interact()
     {
         if (Input.GetButtonDown("Interact") && !GetComponent<Animator>().GetBool("aim"))
         {
             //interact
-            Debug.Log("Interacting");
+            //Debug.Log("Interacting");
             GetComponent<BoxCollider2D>().enabled = true;
             StartCoroutine(DisableCollider2D());
         }
@@ -111,6 +125,7 @@ public class CharacterController : MonoBehaviour {
 
     public int rightWalkeableAmount;
     public int leftWalkeableAmount;//the x is the position, the y is the length;
+    #endregion
 
     #region Fliping
     public bool facingRight = true;
@@ -142,5 +157,27 @@ public class CharacterController : MonoBehaviour {
         }
     }
 
+    #endregion
+
+    #region End Game
+    private void EndGame()
+    {
+
+        gameObject.GetComponent<CharacterController>().canShoot = false;
+        gameObject.GetComponent<CharacterController>().canMove = false;
+        //gameObject.GetComponent<CharacterController>().almostShoot = true;
+
+        StartCoroutine(EndGameRoutine());
+    }
+
+
+    private IEnumerator EndGameRoutine()
+    {
+        GameObject fader = GameObject.Find("Fader");
+        yield return new WaitForSeconds(5);
+        float fadeTime = fader.GetComponent<FaderScene>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        SceneManager.LoadScene("End Game Scene");
+    }
     #endregion
 }
