@@ -27,6 +27,8 @@ public class WeaponGirlInteract : MonoBehaviour {
         {
             GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Charge Weapon");
             GameObject.Find("Weapon Girl").GetComponent<ShowDialogController>().ChangeToDialog(6);
+            GameObject.Find("Main character").GetComponent<CharacterController>().almostShoot = false;//make the player able to shoot
+            GameObject.Find("Door").GetComponent<Door>().active = true;
             Debug.Log("Prepare Weapon");
             prepareWeapon = false;
         }

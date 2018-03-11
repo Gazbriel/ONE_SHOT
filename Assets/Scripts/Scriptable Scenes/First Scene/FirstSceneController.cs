@@ -6,6 +6,7 @@ public class FirstSceneController : MonoBehaviour {
 
     public GameObject woman;
     public GameObject player;
+    public GameObject door;
 
 	// Use this for initialization
 	void Start () {
@@ -75,6 +76,7 @@ public class FirstSceneController : MonoBehaviour {
         woman.GetComponent<ShowDialogController>().ChangeToDialog(5);
         yield return new WaitForSeconds(woman.GetComponent<ShowDialogController>().GetDialogTime(5) + 1);
         woman.GetComponent<WeaponGirlInteract>().CanPrepareWeapon();
+        
         Debug.Log("Fin");
     }
 
