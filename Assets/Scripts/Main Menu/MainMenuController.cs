@@ -43,7 +43,7 @@ public class MainMenuController : MonoBehaviour {
         //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("UISelect");
         switch ((int)pointer.transform.position.y)
         {
-            case 6:
+            case 1:
                 //do
                 StartCoroutine(LightOff());
                 StartCoroutine(ChangeLevel(sceneBegingToChageName));
@@ -64,20 +64,20 @@ public class MainMenuController : MonoBehaviour {
         yield return new WaitForSeconds(timeToWaitToInteract);
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Light");
         beging.SetActive(true);
-        prepare.SetActive(true);
+        //prepare.SetActive(true);
         quit.SetActive(true);
         pointer.SetActive(true);
         farolLight.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         beging.SetActive(false);
-        prepare.SetActive(false);
+        //prepare.SetActive(false);
         quit.SetActive(false);
         pointer.SetActive(false);
         farolLight.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Light");
         beging.SetActive(true);
-        prepare.SetActive(true);
+        //prepare.SetActive(true);
         quit.SetActive(true);
         pointer.SetActive(true);
         farolLight.SetActive(true);
@@ -88,20 +88,20 @@ public class MainMenuController : MonoBehaviour {
         yield return new WaitForSeconds(0.1f);
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Light");
         beging.SetActive(false);
-        prepare.SetActive(false);
+        //prepare.SetActive(false);
         quit.SetActive(false);
         pointer.SetActive(false);
         farolLight.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         beging.SetActive(true);
-        prepare.SetActive(true);
+        //prepare.SetActive(true);
         quit.SetActive(true);
         pointer.SetActive(true);
         farolLight.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Light");
         beging.SetActive(false);
-        prepare.SetActive(false);
+        //prepare.SetActive(false);
         quit.SetActive(false);
         pointer.SetActive(false);
         farolLight.SetActive(false);

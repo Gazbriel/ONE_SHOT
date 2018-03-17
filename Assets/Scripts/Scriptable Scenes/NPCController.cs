@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCController : MonoBehaviour {
-    private bool facingRight;
+    public bool facingRight;
 	// Use this for initialization
 	void Start () {
         speedCounter = speed;

@@ -8,6 +8,9 @@ public class FootStepSound : MonoBehaviour {
 	
     public void PlayFootStepSound()
     {
-        GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayRandom(footStepSoundNames);
+        if (GameObject.FindGameObjectWithTag("AudioManager"))
+        {
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().PlayRandom(footStepSoundNames);
+        }
     }
 }

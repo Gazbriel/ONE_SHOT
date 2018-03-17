@@ -9,12 +9,28 @@ public class CharacterController : MonoBehaviour {
     private float speedCounter;
     public bool canShoot;//this is only for the end game.
     public bool canMove;
+    public bool startFacingRight;
     public void SetCanMove(bool a)
     {
         canMove = a;
     }
+    public bool onTownScene;
     private void Start()
     {
+        if (onTownScene)
+        {
+            LoadPositionOnScene();
+        }
+        
+        if (startFacingRight)
+        {
+            Flip("right");
+        }
+        else
+        {
+            Debug.Log("Fliping left");
+            Flip("left");
+        }
         speedCounter = speed;
     }
     
@@ -40,6 +56,7 @@ public class CharacterController : MonoBehaviour {
         Interact();
     }
 
+    #region Move
     private void TimeCounterToMove()
     {
         if (speedCounter < 0)
@@ -74,7 +91,7 @@ public class CharacterController : MonoBehaviour {
         }
         
     }
-
+    #endregion
     #region Shoot && Almost shoot
 
     public bool almostShoot;
@@ -94,6 +111,15 @@ public class CharacterController : MonoBehaviour {
             if (GetComponentInChildren<AimCollider>().GetAimingPerson() != null)
             {
                 Debug.Log("Shoot to " + GetComponentInChildren<AimCollider>().GetAimingPerson().name + ", end game");
+                if (facingRight)
+                {
+                    GetComponentInChildren<AimCollider>().GetAimingPerson().GetComponent<NPCController>().LookAt("left");
+                }
+                else
+                {
+                    GetComponentInChildren<AimCollider>().GetAimingPerson().GetComponent<NPCController>().LookAt("right");
+                }
+                GetComponentInChildren<AimCollider>().GetAimingPerson().GetComponent<Animator>().SetTrigger("die");
             }
             else
             {
@@ -180,4 +206,12 @@ public class CharacterController : MonoBehaviour {
         SceneManager.LoadScene("End Game Scene");
     }
     #endregion
+
+    #region Town Position Controller
+    private void LoadPositionOnScene()
+    {
+        transform.position = new Vector3(PlayerPrefs.GetInt("spawnPosition"), transform.position.y, transform.position.z);
+    }
+    #endregion
 }
+
