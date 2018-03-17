@@ -8,7 +8,8 @@ public class MainMenuController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(LightOn());
-	}
+        //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Title Music");
+    }
 
     public float timeToWaitToInteract;
     private bool canInteract;
@@ -45,6 +46,7 @@ public class MainMenuController : MonoBehaviour {
         {
             case 1:
                 //do
+                //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Stop("Title Music");
                 StartCoroutine(LightOff());
                 StartCoroutine(ChangeLevel(sceneBegingToChageName));
                 break;

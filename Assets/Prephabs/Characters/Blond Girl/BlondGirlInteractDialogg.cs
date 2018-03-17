@@ -10,6 +10,7 @@ public class BlondGirlInteractDialogg : MonoBehaviour {
         {
             transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
             GetComponent<ShowDialogController>().StartDialog(1);
+            GameObject.Find("Game State").GetComponent<CoreGameState>().blondShortHairSpeech = true;
         }
     }
 }

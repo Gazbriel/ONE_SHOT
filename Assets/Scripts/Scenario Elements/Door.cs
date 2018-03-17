@@ -20,6 +20,7 @@ public class Door : MonoBehaviour {
         //Debug.Log("Fade or what ever");
         float fadeTime = GameObject.Find("Fader").GetComponent<FaderScene>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
+        PlayEnviromentSounds();
         SceneManager.LoadScene(sceneToGo);
     }
 
@@ -31,5 +32,36 @@ public class Door : MonoBehaviour {
             GameObject.FindGameObjectWithTag("MainCharacter").GetComponent<Animator>().SetBool("walking", false);
             StartCoroutine(DoorTransition());
         }
+    }
+
+    private void PlayEnviromentSounds()
+    {
+        //Town Scene
+        if (SceneManager.GetActiveScene().name == "Town Scene")
+        {
+            //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Stop("Bird 1");
+            //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Stop("Bird 2");
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Stop("Cricket");
+        }
+        if (sceneToGo == "Town Scene")
+        {
+            //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Bird 1");
+            //GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Bird 2");
+            GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Cricket");
+        }
+
+        ////Bar Scene
+        //if (SceneManager.GetActiveScene().name == "Bar")
+        //{
+        //    //Stop Bar
+        //    GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Stop("Bar Music");
+        //}
+        //if (sceneToGo == "Bar")
+        //{
+        //    //Play Bar
+        //    GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().Play("Bar Music");
+        //}
+        
+
     }
 }
