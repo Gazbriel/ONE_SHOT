@@ -119,6 +119,9 @@ public class CharacterController : MonoBehaviour {
                 {
                     GetComponentInChildren<AimCollider>().GetAimingPerson().GetComponent<NPCController>().LookAt("right");
                 }
+                //Remove Dialogs.
+                GameObject.Find("Dialogs").SetActive(false);
+                //----------------
                 GetComponentInChildren<AimCollider>().GetAimingPerson().GetComponent<Animator>().SetTrigger("die");
             }
             else

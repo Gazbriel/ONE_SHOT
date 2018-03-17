@@ -16,7 +16,7 @@ public class SetScreenSize : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         FullScreenDetect();
-        Scale();
+        //Scale();
         //Screen.SetResolution(128 * PlayerPrefs.GetInt("scale"), 72 * PlayerPrefs.GetInt("scale"), fullScreen);
     }
 
