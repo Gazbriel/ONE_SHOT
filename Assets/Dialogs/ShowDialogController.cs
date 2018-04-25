@@ -17,7 +17,7 @@ public class ShowDialogController : MonoBehaviour {
     public float speedLetter;
     private float speedLetterCounter;
 
-    private bool dialoging;
+    public bool dialoging;
     // Update is called once per frame
     void Update () {
         if (dialoging)
@@ -67,7 +67,11 @@ public class ShowDialogController : MonoBehaviour {
             //dialogTextVisual.GetComponent<TextMesh>().text += dialogSentences[indexSentence];
             indexSentence++;
         }
-        
+        else
+        {
+            dialoging = false;
+        }
+        //
     }
 
     IEnumerator PlayText(int index)

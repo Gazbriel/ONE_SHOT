@@ -189,7 +189,7 @@ public class CharacterController : MonoBehaviour {
     #endregion
 
     #region End Game
-    private void EndGame()
+    public void EndGame()
     {
 
         gameObject.GetComponent<CharacterController>().canShoot = false;

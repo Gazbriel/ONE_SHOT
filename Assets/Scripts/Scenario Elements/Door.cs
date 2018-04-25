@@ -11,7 +11,7 @@ public class Door : MonoBehaviour {
     public bool active;
     
     public float transitionTime;
-    private IEnumerator DoorTransition()
+    public IEnumerator DoorTransition()
     {
         active = false;
         PlayerPrefs.SetInt("spawnPosition", positionOnTown);
