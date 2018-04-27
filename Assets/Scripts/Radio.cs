@@ -29,7 +29,10 @@ public class Radio : MonoBehaviour {
     {
         if (isTownDoor)
         {
-            if (!GameObject.Find("Game State").GetComponent<CoreGameState>().finalScene || !GameObject.Find("Game State").GetComponent<CoreGameState>().cantEnterBar || !GameObject.Find("Game State").GetComponent<CoreGameState>().barTenderSpeechRichManAcusedHim)
+            if (!GameObject.Find("Game State").GetComponent<CoreGameState>().finalScene 
+                || !GameObject.Find("Game State").GetComponent<CoreGameState>().cantEnterBar 
+                || !GameObject.Find("Game State").GetComponent<CoreGameState>().barTenderSpeechRichManAcusedHim 
+                || !GameObject.Find("Game State").GetComponent<CoreGameState>().blondShortHairSpeechDone)
             {
                 gameObject.SetActive(false);
             }

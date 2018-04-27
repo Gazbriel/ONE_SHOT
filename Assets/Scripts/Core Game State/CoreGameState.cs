@@ -19,6 +19,7 @@ public class CoreGameState : MonoBehaviour {
     //blond short hai woman (empresaria)
     public bool blondShortHairFirstWords;
     public bool blondShortHairSpeech;
+    public bool blondShortHairSpeechDone;
 
     public bool blondShorHairTalkAboutTheRichMan;
 
@@ -82,8 +83,13 @@ public class CoreGameState : MonoBehaviour {
         {
             progress++;
         }
+        if (blondShortHairSpeechDone)
+        {
+            progress++;
+        }
+        
 
-        return (int)(progress * 100 / 12);
+        return (int)(progress * 100 / 13);
 
     }
 

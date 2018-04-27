@@ -16,11 +16,11 @@ public class SetScreenSize : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //if 1 is not open before
-        if (PlayerPrefs.GetInt("firstOpen") == 1)
+        if (PlayerPrefs.GetInt("firstOpen")!= 1)
         {
             PlayerPrefs.SetInt("fullScreen", 1);
             PlayerPrefs.SetInt("scale", 10);
-            PlayerPrefs.SetInt("firstOpen", 2);
+            PlayerPrefs.SetInt("firstOpen", 1);
         }
         if (PlayerPrefs.GetInt("fullScreen") == 1)
         {

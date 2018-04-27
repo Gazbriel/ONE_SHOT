@@ -10,7 +10,10 @@ public class TestCharacter : MonoBehaviour {
         //{
         //    transform.position = new Vector3(-18, transform.position.y, transform.position.z);
         //}
-        if (GameObject.Find("Game State").GetComponent<CoreGameState>().finalScene)
+        if (GameObject.Find("Game State").GetComponent<CoreGameState>().finalScene
+            && GameObject.Find("Game State").GetComponent<CoreGameState>().blondShortHairSpeechDone
+            && GameObject.Find("Game State").GetComponent<CoreGameState>().cantEnterBar
+            && GameObject.Find("Game State").GetComponent<CoreGameState>().barTenderSpeechRichManAcusedHim)
         {
             gameObject.SetActive(false);
         }
